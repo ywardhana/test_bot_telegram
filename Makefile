@@ -51,6 +51,10 @@ build:
 push:
 	@$(foreach var, $(SERVICES), docker push $(REGISTRY)/cream/$(var):$(VERSION);)
 
+migrate:
+	govendor build ./database/migration/migrate.go
+	./migrate
+
 deployment: $(ODIR)
 ifeq ($(ENV),$(DEFENV))
 	kubelize deployment -v $(VERSION) $(SERVICES)
