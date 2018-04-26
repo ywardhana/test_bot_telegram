@@ -7,10 +7,13 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
+type Handler struct {
+}
+
 type BasicHandler struct {
 }
 
-type Handler struct {
+type AgentHandler struct {
 }
 
 func (*Handler) Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) error {
