@@ -52,8 +52,9 @@ push:
 	@$(foreach var, $(SERVICES), docker push $(REGISTRY)/cream/$(var):$(VERSION);)
 
 migrate:
-	govendor build ./database/migration/migrate.go
-	./migrate
+	docker run --rm -it --network host -v $PWD/db:/app/db -v $PWD/.env:/app/.env registry.bukalapak.io/sre/migration:0.0.1 db:create
+	docker run --rm -it --network host -v $PWD/db:/app/db -v $PWD/.env:/app/.env registry.bukalapak.io/sre/migration:0.0.1 db:migrate
+	docker run --rm -it --network host -v $PWD/db:/app/db -v $PWD/.env:/app/.env registry.bukalapak.io/sre/migration:0.0.1 db:migrate:status
 
 deployment: $(ODIR)
 ifeq ($(ENV),$(DEFENV))
