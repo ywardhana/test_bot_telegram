@@ -2,3 +2,5 @@
 vendor/*/
 /kingsman
 /bin
+Gemfile.lock
+.env
