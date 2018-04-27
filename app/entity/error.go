@@ -40,4 +40,9 @@ var (
     Code:       88104,
     HttpStatus: http.StatusUnauthorized,
   }
+  AgentNotFoundError = CustomError{
+    Message:    "Agen Tidak Ditemukan",
+    Code:       88105,
+    HttpStatus: http.StatusNotFound,
+  }
 )

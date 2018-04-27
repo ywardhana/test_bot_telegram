@@ -1,5 +1,9 @@
 package entity
 
+import (
+  "time"
+)
+
 type Agent struct {
   ID                                int64           `db:"id"`
   Deleted                           bool            `db:"deleted"`

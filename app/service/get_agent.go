@@ -5,7 +5,7 @@ import (
   "github.com/jmoiron/sqlx"
 )
 
-func GetInternalTransaction(db *sqlx.DB, agentID int64) (entity.Agent, entity.CustomError) {
+func GetAgent(db *sqlx.DB, agentID int64) (entity.Agent, entity.CustomError) {
   var agent entity.Agent
   db.QueryRowx("SELECT * FROM agents WHERE id=?", agentID).StructScan(&agent)
 
